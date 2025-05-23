@@ -1,0 +1,19 @@
+[project]
+name = "happy-bank"
+version = "0.0.1"
+description = "Happy Bank is an educational project that can be used to explain and demonstrate various concepts and approaches relevant to different roles in software development."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+	"fastapi",
+	"fastmcp",
+	"pydantic",
+	"pytest",
+	"repository_sqlalchemy",
+	"sqlalchemy",
+	"sqlmodel",
+	"uvicorn"
+]
+
+[tool.setuptools]
+package-dir = {"" = "app"}

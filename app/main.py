@@ -6,9 +6,11 @@ from sqlmodel import SQLModel
 
 from app.api.account_routes import router as account_router
 from app.api.bank_routes import router as bank_router
+from app.api.client_routes import router as client_router
 from app.db import engine
 from app.logging_config import setup_logging
-from app.startup import create_default_accounts
+from app.models import Client  # noqa: F401 - ensure table is registered
+from app.startup import create_default_accounts, create_default_clients
 
 # Setup logging first
 setup_logging()
@@ -27,5 +29,7 @@ def serve_static_files():
 
 app.include_router(account_router, prefix="/api/v1", tags=["account"])
 app.include_router(bank_router, prefix="/api/v1", tags=["bank"])
+app.include_router(client_router, prefix="/api/v1", tags=["client"])
 
+create_default_clients()
 create_default_accounts()
